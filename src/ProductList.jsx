@@ -51,7 +51,7 @@ function ProductList() {
             category: "Aromatic Fragrant Plants",
             plants: [
                 {
-                    name: "Lavender",
+                    name: "Lprodender",
                     image: "https://images.unsplash.com/photo-1611909023032-2d6b3134ecba?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                     description: "Calming scent, used in aromatherapy.",
                     cost: "$20"
@@ -116,7 +116,7 @@ function ProductList() {
                     cost: "$9"
                 },
                 {
-                    name: "Lavender",
+                    name: "Lprodender",
                     image: "https://images.unsplash.com/photo-1611909023032-2d6b3134ecba?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                     description: "Calming scent, used in aromatherapy.",
                     cost: "$20"
@@ -232,6 +232,8 @@ function ProductList() {
     fontSize: '30px',
     textDecoration: 'none',
    }
+     const prodItems = useSelector((state) => state.prod);
+
    const handleCartClick = (e) => {
     e.preventDefault();
     setShowCart(true); // Set showCart to true when cart icon is clicked
@@ -239,7 +241,7 @@ function ProductList() {
 const handlePlantsClick = (e) => {
     e.preventDefault();
     setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
-    setShowCart(false); // Hide the cart when navigating to About Us
+    setShowCart(false); // Hide the cart when nprodigating to About Us
 };
 
    const handleContinueShopping = (e) => {
@@ -268,7 +270,21 @@ const handlePlantsClick = (e) => {
         </div>
         {!showCart? (
         <div className="product-grid">
-
+{prodItems.map((item, index) => (
+    <div className="prod_data venue_main" key={index}>
+        <div className="img">
+            <img src={item.image} alt={item.name} />
+        </div>
+    <div className="text"> {item.name} </div>
+    <div> ${item.cost} </div>
+        <div className="addons_btn">
+            <button className="btn-warning" onClick={() => handleDecrementprodQuantity(index)}> &ndash; </button>
+            <span className="quantity-value">{item.description}</span>
+            <button className=" btn-success" onClick={() => handleIncrementprodQuantity(index)}> &#43; </button>
+        </div>
+    </div>
+))}
+Copied!
 
         </div>
  ) :  (
