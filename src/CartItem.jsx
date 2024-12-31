@@ -76,6 +76,7 @@ const CartItem = ({ onContinueShopping }) => {
   );
 };
 
+export function di
 export default CartItem;
 
 
