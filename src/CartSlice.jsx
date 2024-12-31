@@ -15,9 +15,10 @@ export const CartSlice = createSlice({
 
     
     },
-  },
-});
-
-export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
-
-export default CartSlice.reducer;
+  },})
+  
+  state.items = state.items.filter(item => item.name !== action.payload);const { name, quantity } = action.payload;
+  const itemToUpdate = state.items.find(item => item.name === name);
+  if (itemToUpdate) {
+    itemToUpdate.quantity = quantity;
+  }
